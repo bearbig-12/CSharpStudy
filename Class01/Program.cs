@@ -1,4 +1,4 @@
-﻿namespace _202509081615_enCapsulation
+﻿namespace _202509091415_Property
 {
     // 동사무소에서 필요한 손흥민의 정보는?
     // 주소 나이 이름, 가족관계, 성별, 주민번호
@@ -9,15 +9,87 @@
     // class 클래스명 {
     //     데이타;
     // }
+
+
+    // 접근제어자
+    // 객체안에 멤버에 접근을 허용하거나 허용하지 않거나 하는 것을 접근제어자라고 합니다.
+    // 갭슐화의 기본 정책은 정보은닉
+    // private: 외부에서 접근하는 것을 허용하지 않음, 자식이 접근하는 것도 허용하지 않음( 기본)
+    // protected: 자식이 접근하는 것은 허용, 외부에서 접근하는 것은 허용하지 않음
+    // public: 외부에서 접근하는 것을 허용하겠다.
+
     class Son // 캡슐화
     {
-        public string address;
-        public int age;
-        public string name;
-        public bool sungbyul;
-        public string juminNum;
+        private string address = ""; // 멤버필드
+        private int age;
+        private string name = "";
+        private bool sungbyul;
+        private string juminNum = "";
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        // property를 사용할때의 장점
+        // 1. 데이타의 무결성(정확성, 일관성, 유효성)
+        // 2. 디버깅 작업이 용이함.
+
+        public int Age
+        {
+            get => age;
+            set
+            {
+                if (value < 1)
+                {
+                    age = 1;
+                }
+                else if (value > 200)
+                {
+                    age = 200;
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
+
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public bool SungByul
+        {
+            get => sungbyul;
+            set => sungbyul = value;
+        }
+
+        public string JuminNum
+        {
+            get
+            {
+                return juminNum;
+            }
+
+            set => juminNum = value;
+        }
 
     }
+
+    // 멤버필드를 직접 접근하는 것을 허용하지 말라고 합니다. (권고사항)
+    // property를 통해서 접근하도록 해라...
 
 
 
@@ -35,19 +107,21 @@
             // 클래스형 DataType 변수는 동적으로만 만들 수 있습니다.
             Son a = new Son(); // 클래스형 DataType Son으로 객체 a를 만듦.
 
-            a.age = 32;
-            a.name = "손흥민";
-            a.juminNum = "00000000";
-            a.sungbyul = false;
-            a.address = "런던";
+            a.Age = 32;
+            a.Name = "손흥민";
+            a.JuminNum = "00000000";
+            a.SungByul = false;
+            a.Address = "런던";
 
 
-            Console.WriteLine($"son 나이: {a.age}");
-            Console.WriteLine($"son 이름: {a.name}");
-            Console.WriteLine($"son 주민벊: {a.juminNum}");
-            string sungbyul = a.sungbyul ? "여자" : "남자";
+            a.Age = 400;
+
+            Console.WriteLine($"son 나이: {a.Age}");
+            Console.WriteLine($"son 이름: {a.Name}");
+            Console.WriteLine($"son 주민벊: {a.JuminNum}");
+            string sungbyul = a.SungByul ? "여자" : "남자";
             Console.WriteLine($"son 성별: {sungbyul}");
-            Console.WriteLine($"son 주소: {a.address}");
+            Console.WriteLine($"son 주소: {a.Address}");
 
         }
     }
