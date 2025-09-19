@@ -1,4 +1,4 @@
-﻿namespace _202509181653_Composition_Robot
+﻿namespace _20250911438_Composition_Robot
 {
 
     class Arm
@@ -56,6 +56,16 @@
             _name = name;
         }
 
+        public void SetLeftArm(Arm leftArm)
+        {
+            _leftArm = leftArm;
+        }
+
+        public void SetRightArm(Arm rightArm)
+        {
+            _rightArm = rightArm;
+        }
+
         public void Info()
         {
             Console.WriteLine($"-- {_name} --");
@@ -67,38 +77,34 @@
         }
     }
 
-    class CannonArmRobot : Robot
-    {
-        public CannonArmRobot(CannonArm leftArm, CannonArm rightArm)
-           : base(leftArm, rightArm, "로켓암로봇") { }
-    }
 
-    class RocketArmRobot : Robot
-    {
-        public RocketArmRobot(RocketArm leftArm, RocketArm rightArm)
-           : base(leftArm, rightArm, "로켓암로봇") { }
-    }
-
-    class BombArmRobot : Robot
-    {
-        public BombArmRobot(BombArm leftArm, BombArm rightArm)
-           : base(leftArm, rightArm, "포탄암로봇") { }
-    }
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            CannonArmRobot cannonArmRobot = new CannonArmRobot(new CannonArm(), new CannonArm());
-            RocketArmRobot rocketArmRobot = new RocketArmRobot(new RocketArm(), new RocketArm());
-            BombArmRobot bombArmRobot = new BombArmRobot(new BombArm(), new BombArm());
+            Robot cannonArmRobot = new Robot(new CannonArm(), new CannonArm(), "캐논암로봇");
+            Robot rocketArmRobot = new Robot(new RocketArm(), new RocketArm(), "로켓암로봇");
+            Robot bombArmRobot = new Robot(new BombArm(), new BombArm(), "폭탄암로봇");
+            Robot leftCannonRightRocketArmRobot = new Robot(new CannonArm(), new RocketArm(), "왼캐논오로켓로봇");
+
+
 
             cannonArmRobot.Info();
             Console.WriteLine("\n");
             rocketArmRobot.Info();
             Console.WriteLine("\n");
             bombArmRobot.Info();
+            Console.WriteLine("\n");
+            leftCannonRightRocketArmRobot.Info();
+            Console.WriteLine("\n");
+            leftCannonRightRocketArmRobot.SetLeftArm(new BombArm());
+            Console.WriteLine("\n");
+            leftCannonRightRocketArmRobot.Info();
+
         }
     }
 }
+
+
 

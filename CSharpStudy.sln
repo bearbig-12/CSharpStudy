@@ -131,6 +131,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassEx01", "ClassEx01\Clas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRobot", "ClassRobot\ClassRobot.csproj", "{1F38CD54-61FD-423F-BA49-5D519F2D9030}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassPolymorphism", "ClassPolymorphism\ClassPolymorphism.csproj", "{F271C1BD-9071-435C-BEEF-B10FB9F37B74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -393,6 +395,10 @@ Global
 		{1F38CD54-61FD-423F-BA49-5D519F2D9030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F38CD54-61FD-423F-BA49-5D519F2D9030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F38CD54-61FD-423F-BA49-5D519F2D9030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
