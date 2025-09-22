@@ -1,0 +1,35 @@
+﻿using Monster;
+
+namespace _202509221529_Polymorphism_MonsterAttack
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Dragon dragonA = new Dragon("dragonA", 100, 25, 30);
+			Dragon dragonB = new Dragon("dragonB", 100, 29, 27);
+
+			Goblin goblinA = new Goblin("goblinA", 50, 10, 15, 8);
+			Goblin goblinB = new Goblin("goblinB", 45, 10, 15, 8);
+
+
+			dragonA.Attack(dragonB);
+			dragonB.Info();
+
+			Console.WriteLine();
+
+			goblinA.Attack(goblinB);
+			goblinB.Info();
+
+			Console.WriteLine();
+			dragonA.Attack(goblinB);
+			goblinB.Info();
+
+
+			Console.WriteLine();
+			goblinA.Attack(dragonA);
+			goblinA.Info();
+
+		}
+	}
+}

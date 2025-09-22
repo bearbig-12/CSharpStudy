@@ -133,6 +133,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRobot", "ClassRobot\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassPolymorphism", "ClassPolymorphism\ClassPolymorphism.csproj", "{F271C1BD-9071-435C-BEEF-B10FB9F37B74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassVirtualFunction", "ClassVirtualFunction\ClassVirtualFunction.csproj", "{EF7E05B8-D22D-40D4-84AC-95FBB782AC08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassPolymorphism02", "ClassPolymorphism02\ClassPolymorphism02.csproj", "{43F02967-9DBA-4DC6-9A0E-B03632EB6196}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -399,6 +403,14 @@ Global
 		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F271C1BD-9071-435C-BEEF-B10FB9F37B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7E05B8-D22D-40D4-84AC-95FBB782AC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7E05B8-D22D-40D4-84AC-95FBB782AC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7E05B8-D22D-40D4-84AC-95FBB782AC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7E05B8-D22D-40D4-84AC-95FBB782AC08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F02967-9DBA-4DC6-9A0E-B03632EB6196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F02967-9DBA-4DC6-9A0E-B03632EB6196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F02967-9DBA-4DC6-9A0E-B03632EB6196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F02967-9DBA-4DC6-9A0E-B03632EB6196}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

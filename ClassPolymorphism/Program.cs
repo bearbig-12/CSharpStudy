@@ -1,4 +1,4 @@
-﻿namespace _202509191703_Polymorphism_CoffeeShop
+﻿namespace Polymorphism_CoffeeShop
 {
     public enum DrinkType
     {
@@ -8,7 +8,12 @@
         Ade
     }
 
-    public class Drink
+
+    // 추상메소드를 하나라도 가지고 있는 크래스를 추상클래스라고 합니다.
+    // 추상클래스는 자신의 객체를 만들수 없습니다.
+    // 대신에 자신에게서 상속받는 자식클래스는 자신의 추상메소드를 반드시
+    // 구현하도록 강제하는 능력이 생깁니다.
+    abstract public class Drink
     {
         private DrinkType _type;
         private string _name;
@@ -23,10 +28,7 @@
             _name = "음료";
         }
 
-        public virtual void MakeADrink() // 일반 메소드 -> 가상메소드
-        {
-            Console.WriteLine($"음료를 만듭니다.");
-        }
+        public abstract void MakeADrink(); // 추상 메소드
     }
 
     public class Coffee : Drink
@@ -165,6 +167,13 @@
     {
         static void Main(string[] args)
         {
+            // 추상클래스는 자신의 객체를 만들 수 없습니다.
+            /*
+            Drink drink = new Drink();
+
+            drink.MakeADrink();
+            */
+
             Barista bari = new Barista();
             Cashier cashier = new Cashier(bari);
             Guest guest = new Guest();
@@ -181,6 +190,7 @@
         }
     }
 }
+
 
 
 
