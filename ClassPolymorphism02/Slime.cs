@@ -17,6 +17,17 @@ namespace Monster
 			_physicalDefense = physicalDefense;
 		}
 
+		public override void GetDamage(int attack)
+		{
+			Console.WriteLine($"Slime.GetDamage");
+
+			int damage = attack - (_defense +  _physicalDefense);
+
+			if(damage <= 0) { damage = 0; }
+
+			_health -= damage;
+		}
+
 		public new void Info()
 		{
 			base.Info();

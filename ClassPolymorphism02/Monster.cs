@@ -3,12 +3,12 @@
 
 namespace Monster
 {
-	internal class Monster
+	internal abstract class Monster
 	{
-		private string _name;   // 몬스터명
-		private int _health;    // 생명력
-		private int _defense;   // 방어력
-		private int _attack;    // 공격력
+		protected string _name;   // 몬스터명
+		protected int _health;    // 생명력
+		protected int _defense;   // 방어력
+		protected int _attack;    // 공격력
 
 		public int Health
 		{
@@ -27,6 +27,7 @@ namespace Monster
 		}
 
 
+
 		public Monster(string name, int health, int defense, int attack)
 		{
 			_name = name;
@@ -35,21 +36,24 @@ namespace Monster
 			_attack = attack;
 		}
 
-		public void Attack(Monster enemy)
+        public abstract void GetDamage(int attack);
+
+
+        public void Attack(Monster enemy)
 		{
+			Console.WriteLine($"Attack(Monster)"); 
 			int oldHealth = enemy._health;
-			int damage = _attack - enemy._defense;
 
-			if (damage <= 0)
-			{
-				damage = 0;
-			}
-
-			enemy._health -= damage;
+			enemy.GetDamage(_attack);
 
 			Console.WriteLine($"{_name}이 {enemy._name}을 공격해서 {enemy._name}의 생명력이 {oldHealth}에서 {enemy._health}로 내려감");
 
 		}
+
+		// Goblin, Slime이 있습니다.
+		// Damage 처리하는 방식도 변경하세요..
+		
+
 
 		public void Info()
 		{

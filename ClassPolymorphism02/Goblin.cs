@@ -20,6 +20,16 @@ namespace Monster
 			_physicalAttackRegist = physicalRegistAttack;
 		}
 
+        public override void GetDamage(int attack)
+        {
+            Console.WriteLine($"Goblin.GetDamge()");
+			int damage = attack - (_defense + _physicalAttackRegist);
+
+			if(damage <= 0) { damage = 0; }
+
+			_health -= damage;
+		}
+
 		public new void Info()
 		{
 			base.Info();

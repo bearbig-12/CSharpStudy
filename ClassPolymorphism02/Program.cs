@@ -12,6 +12,10 @@ namespace _202509221529_Polymorphism_MonsterAttack
 			Goblin goblinA = new Goblin("goblinA", 50, 10, 15, 8);
 			Goblin goblinB = new Goblin("goblinB", 45, 10, 15, 8);
 
+			Slime slimeA = new Slime("slimeA", 30, 5, 10, 8);
+
+			Zombi zombiA = new Zombi("zombiA", 60, 20, 13);
+
 
 			dragonA.Attack(dragonB);
 			dragonB.Info();
@@ -29,6 +33,14 @@ namespace _202509221529_Polymorphism_MonsterAttack
 			Console.WriteLine();
 			goblinA.Attack(dragonA);
 			goblinA.Info();
+
+			Console.WriteLine();
+			goblinA.Attack(slimeA);
+			slimeA.Info();
+
+			Console.WriteLine();
+			goblinA.Attack(zombiA); 
+			zombiA.Info();
 
 		}
 	}
