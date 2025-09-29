@@ -1,6 +1,10 @@
-﻿namespace Custom
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Custom
 {
-    class List
+    class List<T> : IEnumerator<T>, IEnumerable<T>
     {
         class Node
         {
@@ -11,14 +15,14 @@
                 get { return _next; }
             }
 
-            private int _data;
-            public int Data
+            private T _data;
+            public T Data
             {
                 get { return _data; }
                 set { _data = value; }
             }
 
-            public Node(int data)
+            public Node(T data)
             {
                 _data = data;
             }
@@ -38,7 +42,31 @@
             _count = 0;
         }
 
-        public void InsertNewHead(int data)
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node current = _headNode;
+
+            while (current != null)
+            {
+                yield return current.Data;
+
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            Node current = _headNode;
+
+            while (current != null)
+            {
+                yield return current.Data;
+
+                current = current.Next;
+            }
+        }
+
+        public void InsertNewHead(T data)
         {
             if (_headNode == null)
             {
@@ -54,7 +82,7 @@
             _count++;
         }
 
-        public void AppendNode(int data)
+        public void AppendNode(T data)
         {
             if (_headNode == null)
             {
@@ -75,7 +103,7 @@
             _count++;
         }
 
-        public void InsertNode(int num, int data)
+        public void InsertNode(int num, T data)
         {
             // 리스트의 노드의 갯수보다 num이 큰거나 같은 경우 Append 처리한다.
             if (num >= _count)
@@ -96,6 +124,8 @@
                 node.Next = current.Next;
                 current.Next = node;
             }
+
+            _count++;
         }
 
 
@@ -113,7 +143,6 @@
                 _headNode = _headNode.Next;
 
                 head.Next = null;
-                _count--;
             }
             else
             {
@@ -130,12 +159,13 @@
                 Node remove = current.Next;
                 current.Next = remove.Next;
                 remove.Next = null;
-                _count--;
             }
+
+            _count--;
         }
 
 
-        public int GetData(int num)
+        public T GetData(int num)
         {
             Node current = _headNode;
 
@@ -148,6 +178,55 @@
 
             return current.Data;
         }
+
+        Node _currentNode = null;
+
+        public T Current
+        {
+            get
+            {
+                return _currentNode.Data;
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return _currentNode.Data;
+            }
+        }
+
+        public bool MoveNext()
+        {
+            if (_currentNode == null)
+            {
+                _currentNode = _headNode;
+            }
+            else
+            {
+                _currentNode = _currentNode.Next;
+            }
+
+            if (_currentNode != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Reset()
+        {
+            _currentNode = _headNode;
+        }
+
+        public void Dispose()
+        {
+
+        }
     }
 
 }
@@ -159,22 +238,19 @@ namespace _202509261245_Custom_LinkedList
     {
         static void Main(string[] args)
         {
-            Custom.List list = new Custom.List();
+            Custom.List<int> list = new Custom.List<int>();
 
             for (int i = 0; i < 10; i++)
             {
                 list.AppendNode(i);
             }
 
-
-
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 Console.WriteLine($"list[{i}] =  {list.GetData(i)}");
             }
 
-            Console.WriteLine("\n삭제");
-
+            Console.WriteLine($"\n");
             list.RemoveNode(2); // 2번째
 
             for (int i = 0; i < list.Count; i++)
@@ -182,15 +258,29 @@ namespace _202509261245_Custom_LinkedList
                 Console.WriteLine($"list[{i}] =  {list.GetData(i)}");
             }
 
-            Console.WriteLine("\n삽입");
 
             list.InsertNode(2, 10);
 
-            for (int i = 0; i < list.Count; i++)
+
+            Custom.List<float> flist = new Custom.List<float>();
+
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine($"list[{i}] =  {list.GetData(i)}");
+                flist.AppendNode(i * 1.2f);
             }
 
+            Console.WriteLine("\n");
+            for (int i = 0; i < flist.Count; i++)
+            {
+                Console.WriteLine($"flist[{i}] = {flist.GetData(i)}");
+            }
+
+            Console.WriteLine("\n");
+
+            foreach (var data in flist)
+            {
+                Console.WriteLine(data);
+            }
 
 
         }
